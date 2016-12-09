@@ -7,7 +7,8 @@ services:
     applications:
         image: tianon/true
         volumes:
-            - ../:/var/www
+#            - ../:/var/www
+            - ../www/:/var/www
 #            - ../sample/:/var/www/sample
 
 ### Workspace Utilities Container ###########################
@@ -92,6 +93,7 @@ services:
         volumes_from:
             - applications
         volumes:
+            - ./apache2/sites-enabled/test-dev.conf:/etc/apache2/sites-enabled/test-dev.conf
             - ./logs/apache2:/var/log/apache2
         ports:
             - "80:80"
